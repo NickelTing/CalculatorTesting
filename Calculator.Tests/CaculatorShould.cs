@@ -1,3 +1,5 @@
+using Xunit;
+
 namespace Calculator.Tests
 {
     public class CalculatorShould
@@ -32,6 +34,36 @@ namespace Calculator.Tests
         Assert.Equal(2, result);
     }
 
+        [Fact]
+        public void Subtract_TwoPositiveNumbers_ReturnsCorrectResult()
+        {
+            // Arrange
+            var calculator = new Calculator();
+            int a = 10;
+            int b = 5;
+
+            // Act
+            int result = calculator.Subtract(a, b);
+
+            // Assert
+            Assert.Equal(5, result);
+        }
+
+        [Fact]
+        public void Subtract_TwoNegativeNumbers_ReturnsCorrectResult()
+        {
+            // Arrange
+            var calculator = new Calculator();
+            int a = -10;
+            int b = -5;
+
+            // Act
+            int result = calculator.Subtract(a, b);
+
+            // Assert
+            Assert.Equal(-5, result);
+        }
+
     [Fact]
     public void Multiply_TwoNumbers_ReturnsProduct()
     {
@@ -56,10 +88,18 @@ namespace Calculator.Tests
         int b = 3;
 
         // Act
-        int result = calculator.Divide(a, b);
+        double result = calculator.Divide(a, b);
 
         // Assert
         Assert.Equal(2, result);
+    }
+
+    [Fact]
+    public void IsPrime_NumberLessThan2_ReturnsFalse()
+    {
+        var calculator = new Calculator();
+        Assert.False(calculator.IsPrime(0));
+        Assert.False(calculator.IsPrime(1));
     }
     }
 }
